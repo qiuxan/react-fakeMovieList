@@ -1,10 +1,13 @@
-import React, { Component } from "react";
+import React, { } from "react";
 import { getMovies } from "../services/fakeMovieService";
 import Like from "./common/like";
+import Pagination from "./common/pagination";
 
 class Movies extends React.Component {
   state = {
     movies: getMovies(),
+    pageSize: 4,
+    currentPage: 1
   };
 
   getMovies = () => {
@@ -12,6 +15,15 @@ class Movies extends React.Component {
       return "Please add movies";
     }
   };
+  handlePageChange = page => {
+    // console.log(page);
+
+
+    this.setState({ currentPage: page });
+
+    // const state= this.state
+
+  }
   handleDelete(movie) {
     // console.log(movie);
     const movies = this.state.movies.filter((m) => m._id !== movie._id);
@@ -19,10 +31,24 @@ class Movies extends React.Component {
   }
   handleLike = (movie) => {
     // console.log(movie);
-    const movies = this.state.movies.map((m) => {
-      // console.log(movie);
-      if (m._id === movie._id) { movie.liked = !movie.liked; }
+    // const movies = this.state.movies.map(m => {
+    //   // console.log(movie);
+    //   if (m._id === movie._id) {
+    //     movie.liked = !movie.liked;
+    //   }
+    // });
+
+    const movies = this.state.movies.map(m => {
+      // console.log(m) 
+      if (m._id === movie._id) {
+        // console.log(m.liked);
+        movie.liked = !movie.liked;
+        return m;
+      }
+      else
+        return m;
     });
+    // console.log(movies)
 
     this.setState(movies);
     // movies.map
@@ -33,6 +59,8 @@ class Movies extends React.Component {
   render() {
     // console.log(this.state.movies);
     const { length: count } = this.state.movies;
+    const { movies, pageSize, currentPage } = this.state;
+
     if (count === 0) return <p>There is no movies in the database!</p>;
     return (
       <React.Fragment>
@@ -59,7 +87,7 @@ class Movies extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.movies.map((movie) => (
+            {movies.map((movie) => (
               <tr key={movie._id}>
                 <td>{movie.title}</td>
                 <td>{movie.genre.name}</td>
@@ -79,6 +107,12 @@ class Movies extends React.Component {
             ))}
           </tbody>
         </table>
+        <Pagination
+          itemsCount={count}
+          pageSize={pageSize}
+          onPageChange={this.handlePageChange}
+          currentPage={currentPage}
+        />
       </React.Fragment>
     );
   }
