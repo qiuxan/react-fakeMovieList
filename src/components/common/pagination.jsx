@@ -1,8 +1,6 @@
 import React, { } from 'react';
 import _ from 'lodash';
 
-
-
 const Pagination = (props) => {
 
     const { itemsCount, pageSize, onPageChange, currentPage } = props;
@@ -18,9 +16,13 @@ const Pagination = (props) => {
 
             (<li
                 key={page}
-                className="page-item"
+                className={page === currentPage ? "page-item active" : "page-item"}
             >
-                <a className="page-link" href="/#" onClick={() => onPageChange(page)}>{page}</a>
+                <a
+                    className="page-link"
+                    href="/#"
+                    onClick={() => onPageChange(page)}>{page}
+                </a>
             </li>))}
         </ul>
     </nav>);
