@@ -102,7 +102,7 @@ class Movies extends React.Component {
     const genMovies = currentGenre === null ? this.state.movies : movies;
 
 
-    console.log(genMovies);
+    // console.log(genMovies);
 
     movies = paginate(genMovies, currentPage, pageSize);
     // console.log(genres);
@@ -163,15 +163,13 @@ class Movies extends React.Component {
                   ))}
                 </tbody>
               </table>
-
               <Pagination
-                itemsCount={count}
+                itemsCount={genMovies.length}
                 pageSize={pageSize}
                 onPageChange={this.handlePageChange}
                 currentPage={currentPage}
               />
             </div>
-
           </div>
         </div>
       </React.Fragment>
