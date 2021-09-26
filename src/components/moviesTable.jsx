@@ -1,6 +1,8 @@
 import React from 'react';
 import TableHeader from './common/tableHeader';
+import TableBody from './common/tableBody';
 import Like from './common/like';
+
 
 
 class MoviesTable extends React.Component {
@@ -23,37 +25,11 @@ class MoviesTable extends React.Component {
                 onSort={onSort}
             />
 
-            {/* <thead>
-                <tr>
-                    <th onClick={() => this.raiseSort("title")}><b>Title</b></th>
-                    <th onClick={() => this.raiseSort("genre.name")}><b>Genre</b></th>
-                    <th onClick={() => this.raiseSort("numberInStock")}><b>Stock</b></th>
-                    <th onClick={() => this.raiseSort("dailyRentalRate")}><b>RATE</b></th>
-                    <th>
-                    </th>
-                    <th></th>
-                </tr >
-            </thead > */}
-            <tbody>
-                {movies.map((movie) => (
-                    <tr key={movie._id}>
-                        <td>{movie.title}</td>
-                        <td>{movie.genre.name}</td>
-                        <td>{movie.numberInStock}</td>
-
-                        <td>{movie.dailyRentalRate}</td>
-                        <td> <Like liked={movie.liked} onClick={() => onLike(movie)} /> </td>
-                        <td>
-                            <button
-                                onClick={() => onDelete(movie)}
-                                className="btn btn-danger btn-sm"
-                            >
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                ))}
-            </tbody>
+            <TableBody
+                onLike={onLike}
+                onDelete={onDelete}
+                movies={movies}
+            />
         </table >);
 
     }
