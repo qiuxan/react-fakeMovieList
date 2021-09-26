@@ -1,9 +1,8 @@
 import React, { } from 'react';
 // import _ from 'lodash';
 
-function Genres(props) {
+function Genres({ genres }) {
 
-    const { genres } = props;
     // console.log(props);
     return (
 
