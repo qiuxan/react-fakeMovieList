@@ -3,7 +3,6 @@ import { getMovies } from "../services/fakeMovieService";
 import { getGenres } from "../services/fakeGenreService";
 import { paginate } from "../utils/paginate";
 import MoviesTable from "./moviesTable";
-
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 import _ from 'lodash';
@@ -81,31 +80,31 @@ class Movies extends React.Component {
     if (count === 0) return <p>There is no movies in the database!</p>;
     return (
       <React.Fragment>
-        <div className="container">
-          <div className="row">
-            <div className="col-3">
-              <ListGroup
-                items={this.state.genres}
-                onItemSelect={this.handleGenreSelect}
-                selectedItem={this.state.selectedGenre}
-              />
-            </div>
-            <div className="col">
-              <p>There is {totalCount} movies in the database!</p>
-              <MoviesTable
-                movies={movies}
-                onLike={this.handleLike}
-                onDelete={this.handleDelete}
-                onSort={this.handleSort}
-                sortColumn={sortColumn}
-              />
-              <Pagination
-                itemsCount={totalCount}
-                pageSize={pageSize}
-                onPageChange={this.handlePageChange}
-                currentPage={currentPage}
-              />
-            </div>
+
+
+        <div className="row">
+          <div className="col-3">
+            <ListGroup
+              items={this.state.genres}
+              onItemSelect={this.handleGenreSelect}
+              selectedItem={this.state.selectedGenre}
+            />
+          </div>
+          <div className="col">
+            <p>There is {totalCount} movies in the database!</p>
+            <MoviesTable
+              movies={movies}
+              onLike={this.handleLike}
+              onDelete={this.handleDelete}
+              onSort={this.handleSort}
+              sortColumn={sortColumn}
+            />
+            <Pagination
+              itemsCount={totalCount}
+              pageSize={pageSize}
+              onPageChange={this.handlePageChange}
+              currentPage={currentPage}
+            />
           </div>
         </div>
       </React.Fragment>
