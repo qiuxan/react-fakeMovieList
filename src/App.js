@@ -7,6 +7,7 @@ import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import NaviBar from "./components/common/navibar";
 import MovieForm from './components/movieForm';
+import LoginForm from './loginForm';
 
 
 
@@ -19,6 +20,7 @@ function App() {
         {/* <Movies /> */}
 
         <Switch>
+          <Route path="/login" component={LoginForm}></Route>
           <Route path="/movies/:id" component={MovieForm}></Route>
 
           <Route path="/movies" component={Movies}></Route>
