@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from './components/common/input';
+import Input from './common/input';
 import Joi from "joi-browser";
 
 class LoginForm extends Component {

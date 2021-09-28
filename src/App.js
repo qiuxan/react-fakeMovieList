@@ -7,7 +7,7 @@ import Rentals from './components/rentals';
 import NotFound from './components/notFound';
 import NaviBar from "./components/common/navibar";
 import MovieForm from './components/movieForm';
-import LoginForm from './loginForm';
+import LoginForm from './components/loginForm';
 
 
 
@@ -15,7 +15,6 @@ function App() {
   return (
     <React.Fragment>
       <NaviBar />
-
       <main className="container">
         {/* <Movies /> */}
 
