@@ -21,13 +21,16 @@ class LoginForm extends Component {
         const schema = { [name]: this.schema[name] };
         // const obj = { [name]: value.trim() };
         const obj = { [name]: value };
-        
-        const result = Joi.validate(obj, schema);
-        const { error } = result;
-        // console.log(error.details[0].message);
 
-        if (!error) return null;
-        return error.details[0].message;
+        const { error } = Joi.validate(obj, schema);
+        // console.log(result.error.details[0].message);
+
+        // console.log(result.error.details[0].message);
+        // if (!error) return null;
+        // console.log(result.error.details[0].message)
+        // return error.details[0].message;
+
+        return error ? error.details[0].message : null;
 
         // if (name === 'username') {
         //     if (value.trim() === '') return 'user name is required';
@@ -139,7 +142,9 @@ class LoginForm extends Component {
                         onChange={this.handleChange} />
 
                 </div> */}
-                <button className="btn btn-primary">Login</button>
+                <button 
+                disabled={this.validate()}
+                className="btn btn-primary">Login</button>
             </form>
         </div>;
     }
