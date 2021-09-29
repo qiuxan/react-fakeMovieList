@@ -82,8 +82,10 @@ class Movies extends React.Component {
       <React.Fragment>
 
 
+
         <div className="row">
           <div className="col-3">
+
             <ListGroup
               items={this.state.genres}
               onItemSelect={this.handleGenreSelect}
@@ -91,6 +93,8 @@ class Movies extends React.Component {
             />
           </div>
           <div className="col">
+            <a href="/newmovie" className="btn btn-primary mb-3">New Movie</a>
+
             <p>There is {totalCount} movies in the database!</p>
             <MoviesTable
               movies={movies}
