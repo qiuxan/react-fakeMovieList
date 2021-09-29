@@ -15,11 +15,39 @@ class LoginForm extends Component {
         password: Joi.string().required().label('Password'),
     }
 
+
+    validateProperty = ({ name, value }) => {
+
+        const schema = { [name]: this.schema[name] };
+        // const obj = { [name]: value.trim() };
+        const obj = { [name]: value };
+        
+        const result = Joi.validate(obj, schema);
+        const { error } = result;
+        // console.log(error.details[0].message);
+
+        if (!error) return null;
+        return error.details[0].message;
+
+        // if (name === 'username') {
+        //     if (value.trim() === '') return 'user name is required';
+        // }
+
+        // if (name === 'password') {
+        //     if (value.trim() === '') return 'Password name is required';
+        // }
+
+    }
+
     validate = () => {
         const option = { abortEarly: false };
 
-        const { error } = Joi.validate(this.state.account, this.schema, option);
-        // console.log(result);
+        // console.log(this.state.account);
+
+        const result = Joi.validate(this.state.account, this.schema, option);
+        const { error } = result;
+        // console.log(result.error.details);
+        // console.log(result.error.details[0].message);
 
         if (!error) return null;
 
@@ -57,6 +85,7 @@ class LoginForm extends Component {
 
         const errors = { ...this.state.errors };
         const errorMessage = this.validateProperty(input);
+        // console.log(errorMessage);
         if (errorMessage) errors[input.name] = errorMessage;
         else delete errors[input.name];
 
@@ -65,17 +94,10 @@ class LoginForm extends Component {
         account[input.name] = input.value;
         this.setState({ account, errors });
     }
-    validateProperty = ({ name, value }) => {
-        if (name === 'username') {
-            if (value.trim() === '') return 'user name is required';
-        }
 
-        if (name === 'password') {
-            if (value.trim() === '') return 'Password name is required';
-        }
-
-    }
     render() {
+
+        // console.log(this.schema);
 
         const { account, errors } = this.state;
         return <div>
