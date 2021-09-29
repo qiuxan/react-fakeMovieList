@@ -36,8 +36,6 @@ class Form extends React.Component {
     }
 
 
-
-
     validateProperty = ({ name, value }) => {
         const schema = { [name]: this.schema[name] };
         const obj = { [name]: value };
@@ -63,8 +61,9 @@ class Form extends React.Component {
             disabled={this.validate()}
             className="btn btn-primary">{label}
         </button>);
-    }
 
+        // console.log('submitted');
+    }
 
     renderInput(name, label, type = "text") {
         const { data, errors } = this.state;
