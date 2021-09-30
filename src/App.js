@@ -21,11 +21,11 @@ function App() {
         {/* <Movies /> */}
 
         <Switch>
-          <Route path="/newmovie" component={NewMovie}></Route>
 
           <Route path="/register" component={RegisterForm}></Route>
           <Route path="/login" component={LoginForm}></Route>
           <Route path="/movies/:id" component={MovieForm}></Route>
+          <Route path="/moviesnew" exact component={NewMovie}></Route>
 
           <Route path="/movies" component={Movies}></Route>
           <Route path="/customers" component={Customers}></Route>
