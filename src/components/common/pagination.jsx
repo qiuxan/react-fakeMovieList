@@ -18,7 +18,7 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
             >
                 <a
                     className="page-link"
-                    href="/#"
+                    // href="/#" //stupid ! in route this will cause bug
                     onClick={() => onPageChange(page)}>{page}
                     {/* 1, onPageChange is a function pass from movie.jsx via the props; 2 click and call will pass the parameter (page -- the )  */}
                 </a>

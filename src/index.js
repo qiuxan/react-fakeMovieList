@@ -6,12 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.css';
 import { BrowserRouter } from 'react-router-dom';
+import Movies from "./components/movie";
 
 
 ReactDOM.render(
 
   <React.Fragment>
+
     <BrowserRouter>
+      {/* <Movies /> */}
       <App />
     </BrowserRouter>
   </React.Fragment>,
