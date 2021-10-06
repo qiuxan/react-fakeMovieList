@@ -16,12 +16,12 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
                 key={page}
                 className={page === currentPage ? "page-item active" : "page-item"}
             >
-                <a
+                <span
                     className="page-link"
                     // href="/#" //stupid ! in route this will cause bug
                     onClick={() => onPageChange(page)}>{page}
                     {/* 1, onPageChange is a function pass from movie.jsx via the props; 2 click and call will pass the parameter (page -- the )  */}
-                </a>
+                </span>
             </li>))}
         </ul>
     </nav>);
