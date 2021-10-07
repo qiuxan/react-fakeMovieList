@@ -1,7 +1,7 @@
 import React from 'react';
 import Form from './common/form';
 import Joi from "joi-browser";
-import { getGenres } from "../services/fakeGenreService";
+import { getGenres } from "../services/genreService";
 
 class NewMovie extends Form {
     state = {
