@@ -18,5 +18,6 @@ function log(error) {
     // Sentry.captureException(error);
 
 }
+const allLogFunctions = { init, log }
 
-export default { init, log };
+export default allLogFunctions;

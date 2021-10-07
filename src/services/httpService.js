@@ -17,13 +17,15 @@ axios.interceptors.response.use(null, error => {
 
 });
 
-// export default Sentry.withProfiler({
-export default {
+const httpMethod = {
     get: axios.get,
     post: axios.post,
     put: axios.put,
     delete: axios.delete,
     patch: axios.patch
 };
+
+// export default Sentry.withProfiler({
+export default httpMethod;
 // });
 
