@@ -1,4 +1,5 @@
 import React from 'react';
+import auth from "../services/authService";
 import Joi from "joi-browser";
 import Form from './common/form';
 import * as userService from '../services/userService';
@@ -15,14 +16,9 @@ class RegisterForm extends Form {
         name: Joi.string().required().label('Name')
     }
     doSubmit = async () => {
-        //to backend
-        // console.log('submitted');
-
         try {
             const response = await userService.register(this.state.data);
-            // console.log(response);
-            localStorage.setItem('token', response.headers['x-auth-token']);
-            // this.props.history.push('/');
+            auth.loginWithJwt(response.headers['x-auth-token']);
             window.location = '/';
 
         } catch (ex) {
@@ -31,14 +27,8 @@ class RegisterForm extends Form {
                 errors.username = ex.response.data;
                 this.setState({ errors });
             }
-
-
         }
-
-
     }
-
-
 
     render() {
         return <div><h1>Rigister </h1>

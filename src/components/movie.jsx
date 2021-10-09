@@ -133,19 +133,18 @@ class Movies extends React.Component {
 
   render() {
 
-    // console.log(this.state);
 
     const { length: count } = this.state.movies;
     const { pageSize, currentPage, sortColumn, searchQuery } = this.state;
+
+    const { user } = this.props;
+    // console.log(user);
 
     const { totalCount, data: movies } = this.getPagedData();
 
     if (count === 0) return <p>There is no movies in the database!</p>;
     return (
       <React.Fragment>
-
-
-
         <div className="row">
           <div className="col-3">
 
@@ -157,7 +156,7 @@ class Movies extends React.Component {
           </div>
           <div className="col">
 
-            <Link to="/movies/new" className="btn btn-primary mb-3">New Movie</Link>
+            {user && (<Link to="/movies/new" className="btn btn-primary mb-3">New Movie</Link>)}
 
             <p>There is {totalCount} movies in the database!</p>
 
