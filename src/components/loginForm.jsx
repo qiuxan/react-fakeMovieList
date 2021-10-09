@@ -2,6 +2,7 @@ import React from 'react';
 import Joi from "joi-browser";
 import Form from './common/form';
 import auth from '../services/authService';
+import { Redirect } from 'react-router';
 
 class LoginForm extends Form {
 
@@ -26,7 +27,8 @@ class LoginForm extends Form {
             // console.log(jwt);
             // localStorage.setItem('token', jwt);
             // this.props.history.push('/');
-            window.location = '/';
+            const { state } = this.props.location;
+            window.location = state ? state.from.pathname : '/';
 
         } catch (ex) {
 
@@ -48,6 +50,7 @@ class LoginForm extends Form {
 
     render() {
 
+        if (auth.getCurrentUser()) return <Redirect to="/" />
         return <div>
             <h1>Login</h1>
             <form onSubmit={this.handleSubmit}>

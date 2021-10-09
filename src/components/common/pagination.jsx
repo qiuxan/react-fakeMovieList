@@ -8,7 +8,6 @@ const Pagination = ({ itemsCount, pageSize, onPageChange, currentPage }) => {
     const pages = _.range(1, pageCount + 1);
     //get an array [1,2,3] eg. there are 3 pages
 
-
     return (<nav aria-label="Page navigation example">
         <ul className="pagination">
             {pages.map(page =>

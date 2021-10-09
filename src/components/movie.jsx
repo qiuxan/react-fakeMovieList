@@ -111,25 +111,6 @@ class Movies extends React.Component {
   };
 
 
-  // getPageData = () => {
-
-  //   const { pageSize, currentPage, selectedGenre, movies: allMovies, sortColumn } = this.state;
-
-  //   const filtered =
-  //     selectedGenre && selectedGenre._id ?
-  //       allMovies.filter(m => m.genre._id === selectedGenre._id)
-  //       : allMovies;
-
-  //   const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-  //   const movies = paginate(sorted, currentPage, pageSize);
-
-  //   return { data: movies, totalCount: filtered.length };
-
-  // }
-
-  //before adding search feature
-
-
 
   render() {
 
